@@ -1,0 +1,6 @@
+body {
+  background-color: rgba(24, 24, 24, .7);
+  color: #fff;
+  -webkit-app-region: drag;
+  -webkit-user-select: none;
+}

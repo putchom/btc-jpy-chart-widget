@@ -1,0 +1,14 @@
+{
+  "name": "btc-jpy-chart-widget",
+  "version": "1.0.0",
+  "main": "main.js",
+  "repository": "https://github.com/putchom/btc-jpy-chart-widget.git",
+  "author": "putchom <putchom8@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "./node_modules/.bin/electron ."
+  },
+  "dependencies": {
+    "electron": "^1.7.8"
+  }
+}
