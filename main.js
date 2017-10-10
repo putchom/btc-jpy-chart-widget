@@ -1,8 +1,9 @@
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, Menu, Tray} = require('electron')
 const path = require('path')
 const url = require('url')
 
 let win
+let tray = null
 
 function createWindow () {
   win = new BrowserWindow({
@@ -19,11 +20,24 @@ function createWindow () {
   }))
 
   win.on('closed', () => {
-    win = null
+    app.quit()
   })
 }
 
-app.on('ready', createWindow)
+function createTray () {
+  tray = new Tray(__dirname + "/icon@3x.png")
+  const contextMenu = Menu.buildFromTemplate([
+    {label: 'Show', click: function () { win.focus(); }},
+    {label: 'Quit', click: function () { win.close(); }}
+  ])
+  tray.setToolTip(app.getName())
+  tray.setContextMenu(contextMenu)
+}
+
+app.on('ready', () => {
+  createWindow()
+  createTray()
+})
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
